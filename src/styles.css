@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+p {
+  margin: 20px;
+  font-size: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+body{
+  padding: 10px;
+}

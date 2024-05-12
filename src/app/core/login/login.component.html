@@ -1,0 +1,36 @@
+<div class="row mt-5 justify-content-center align-items-center">
+  <div class="col-12 col-lg-6 mt-5">
+    <div class="card shadow bg-body-tertiary rounded">
+      <div class="card-header">
+        <h2 class="text-center">Login</h2>
+      </div>
+      <div class="card-body">
+        <form method="post">
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label><span class="text-danger">*</span>
+            <input type="text" class="form-control" id="username" name="username"  [(ngModel)]="username">
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label><span class="text-danger">*</span>
+            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password">
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-auto">
+              <button type="submit" (click)="login(username, password)"  class="btn main-btn btn-outline-primary text-center">
+                Login
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <div class="row justify-content-center my-3">
+          <div class="col-auto">
+            <a href="" class="fs-5 text-center">Create New Account</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

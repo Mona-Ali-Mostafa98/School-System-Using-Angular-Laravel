@@ -1,0 +1,70 @@
+<div aria-hidden="true" aria-labelledby="updatedStudentModalLabel" class="modal fade text-start"
+     data-bs-backdrop="static" data-bs-keyboard="false" id="updatedStudentModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updatedStudentModalLabel">
+          Update Student {{ updatedStudent.name }}
+        </h5>
+        <button
+          aria-label="Close"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          type="button"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form class="col-12 mt-4">
+          <div class="col-12 mb-3">
+            <label class="form-label" for="name">Name: <span class="text-danger">*</span></label>
+            <input [(ngModel)]="updatedStudent.name"
+                   [ngClass]="{'form-control':true,'is-invalid': updatedStudent.name.length < 3, 'is-valid': updatedStudent.name.length >= 3}"
+                   id="name"
+                   name="name"
+                   placeholder="Enter your name"
+                   type="text"/>
+            <div *ngIf="updatedStudent.name.length < 3" class="invalid-feedback">
+              Please enter a name with at least 3 characters.
+            </div>
+          </div>
+
+          <div class="col-12 mb-3">
+            <label class="form-label" for="email">Email: <span class="text-danger">*</span></label>
+            <input [(ngModel)]="updatedStudent.email"
+                   [ngClass]="{'is-invalid': updatedStudent.email.length < 10, 'is-valid': updatedStudent.email.length >= 10}"
+                   class="form-control"
+                   id="email"
+                   name="email"
+                   placeholder="Enter your email"
+                   type="email"/>
+            <div *ngIf="updatedStudent.email.length < 10 && (updatedStudent.email || updatedStudent.email === '')"
+                 class="invalid-feedback">
+              Please enter an email with at least 10 characters.
+            </div>
+          </div>
+
+          <div class="col-12 mb-3">
+            <label class="form-label" for="age">Age: <span class="text-danger">*</span></label>
+            <input [(ngModel)]="updatedStudent.age"
+                   [ngClass]="{'is-invalid': updatedStudent.age <= 0, 'is-valid': updatedStudent.age > 0}"
+                   class="form-control"
+                   id="age"
+                   name="age"
+                   placeholder="Enter your age"
+                   type="number"/>
+            <div *ngIf="updatedStudent.age <= 0 && (updatedStudent.age)" class="invalid-feedback">
+              Please enter age.
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-warning" data-bs-dismiss="modal" type="button">Reset</button>
+        <button (click)="saveUpdatedStudent()" class="btn btn-primary" data-bs-dismiss="modal" id="submitBtn"
+                type="button">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

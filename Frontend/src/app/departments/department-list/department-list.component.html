@@ -1,0 +1,67 @@
+<p>
+  Departments Component Works!
+</p>
+<div class="row justify-content-center align-items-center">
+  <div class="col">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <div class="row justify-content-between align-items-center">
+          <h4 class="col text-primary">Departments</h4>
+          <button class="col-2 btn btn-outline-primary me-2 py-2 text-center" data-bs-target="#departmentModal" data-bs-toggle="modal" type="button">
+            Add New Department
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <table class="table table-bordered table-hover table-responsive">
+              <thead class="table-light">
+              <tr>
+                <th>#</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Capacity</th>
+                <th [width]="300">Action</th>
+              </tr>
+              </thead>
+              <tbody>
+                @for (department of departments; track department.id; let i = $index) {
+                  <tr>
+                    <td>{{ i }}</td>
+                    <td>{{ department.id }}</td>
+                    <td>{{ department.name }}</td>
+                    <td>{{ department.capacity }}</td>
+                    <td>
+                      <div class="row justify-content-evenly align-items-center">
+                        <button class="btn btn-outline-success p-2 col-3" data-bs-target="#showDepartmentModal"
+                                data-bs-toggle="modal"
+                                type="button" (click)="showDepartment(department)">
+                          <i class="fa-solid fa-eye"></i>
+                        </button>
+                        <button
+                          class="btn btn-outline-warning p-2 col-3"
+                          data-bs-target="#updatedDepartmentModal"
+                          data-bs-toggle="modal"
+                          type="button"
+                          (click)="updateDepartment(department)">
+                          <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                        <button class="btn btn-outline-danger p-2 col-3" (click)="deleteDepartment(department.id)" >
+                          <i class="fa-solid fa-trash"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-department-create-model [departments]="departments"></app-department-create-model>
+<app-department-show-model [selectedDepartment]="selectedDepartment"></app-department-show-model>
+<app-department-update-model [updatedDepartment]="updatedDepartment" [departments]="departments"></app-department-update-model>

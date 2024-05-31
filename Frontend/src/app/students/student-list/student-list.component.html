@@ -1,0 +1,69 @@
+<p>
+  Students Component Works!
+</p>
+<div class="row justify-content-center align-items-center">
+  <div class="col">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <div class="row justify-content-between align-items-center">
+          <h4 class="col text-primary">Students</h4>
+          <button class="col-2 btn btn-outline-primary me-2 py-2 text-center" data-bs-target="#studentModal" data-bs-toggle="modal" type="button">
+            Add New Student
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <table class="table table-bordered table-hover table-responsive">
+              <thead class="table-light">
+              <tr>
+                <th>#</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th [width]="300">Action</th>
+              </tr>
+              </thead>
+              <tbody>
+                @for (student of students; track student.id; let i = $index) {
+                  <tr>
+                    <td>{{ i }}</td>
+                    <td>{{ student.id }}</td>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.email }}</td>
+                    <td>
+                      <div class="row justify-content-evenly align-items-center">
+                        <button class="btn btn-outline-success p-2 col-3" data-bs-target="#showStudentModal"
+                                data-bs-toggle="modal"
+                                type="button" (click)="showStudent(student)">
+                          <i class="fa-solid fa-eye"></i>
+                        </button>
+                        <button
+                          class="btn btn-outline-warning p-2 col-3"
+                          data-bs-target="#updatedStudentModal"
+                          data-bs-toggle="modal"
+                          type="button"
+                          (click)="updateStudent(student)">
+                          <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                        <button class="btn btn-outline-danger p-2 col-3" (click)="deleteStudent(student.id)">
+                          <i class="fa-solid fa-trash"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-student-create-model></app-student-create-model>
+<app-student-show-model [selectedStudent]="selectedStudent"></app-student-show-model>
+<app-student-update-model [updatedStudent]="updatedStudent"></app-student-update-model>
